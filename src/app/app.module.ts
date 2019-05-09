@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { MatButtonModule } from '@angular/material/button';
 import {MatListModule} from '@angular/material/list';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     BrowserAnimationsModule,
     MatButtonModule,
     MatListModule,
+    MatIconModule,
     FlexLayoutModule  
     
   ],

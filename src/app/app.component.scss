@@ -1,88 +1,13 @@
-$brown900 : #3E2723;
-$brown500 : #795548;
-$brown100 : #D7CCC8;
-$brown50 : #EFEBE9;
+@import '../panel.scss';
 
-$amber100 : #FFECB3;
-$amber400 : #FFCA28;
-
-
-$panelBackground : bisque;
-$bodyBackground : beige;
-
-.p-0 {
-    padding: 0px;
-}
-
-.pt-0 {
-    padding-top: 0px;
-}
-
-.dark {
-    background: $brown900;
-    color: azure;
-    &:hover {
-        background: $brown500;
-      }
-    &:focus {
-       color: brown; 
-    }  
-}
-
-.primary {
-    background-color: $panelBackground;
-    color: brown;
-    &:hover {
-        background: $brown500;
-        color: azure;
-      }
-}
-
-.secondry {
-    background-color: $brown500;
-    color: $amber100;
-    border-bottom: 1px solid $amber400;
-    &:hover {
-        background: $brown500;
-        color: azure;
-      }
-}
-
-.container {
-    height: 95vh;
-    color: brown;
-}
-
-.panel {
-    background-color: $panelBackground;
-}
-
-.body {
+$bodyBackground  : beige;
+ 
+ .body {
     background-color: $bodyBackground;
 }
 
-.panel-item {
-    border-bottom: 1px solid grey
-}
-
-.scrollable {
-    overflow: auto !important;
-}
-
-::-webkit-scrollbar {
-    width: 5%;
-    max-width: 10px;
-    min-width: 4px;
-    padding-right: 1px;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #b30000; 
-    border-radius: 5px 5px 5px 5px;
-    opacity : 0;
-}
 
 
-::-webkit-scrollbar-thumb:hover {
-    opacity : 1;
-}
+
+
+

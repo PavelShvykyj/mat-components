@@ -1,0 +1,123 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+
+
+$brown-app-primary: mat-palette($mat-amber,200,100,50);
+$brown-app-accent:  mat-palette($mat-brown, 800, 400, 100);
+$brown-app-warn:    mat-palette($mat-red);
+$brown-app-theme: mat-light-theme($brown-app-primary, $brown-app-accent, $brown-app-warn);
+
+
+
+$grey-app-primary: mat-palette($mat-deep-purple);
+$grey-app-accent:  mat-palette($mat-blue-gray);
+$grey-app-warn:    mat-palette($mat-red);
+$grey-app-theme: mat-light-theme($grey-app-primary, $grey-app-accent, $grey-app-warn);
+
+
+@mixin inherit_theme($theme) {
+
+    $accent : map-get($theme , accent );
+    $primary : map-get($theme , primary );
+    $warn : map-get($theme , warn );
+    $panelBackground : mat-color($primary,100);
+    $foreground : map-get($theme, foreground);
+    $lightcolor : mat-color($primary,50);
+    $darkcolor  : mat-color($accent,900);
+
+    .dark  {
+        background: mat-color($accent,900);
+        color: $lightcolor !important;
+        &:hover {
+            background: mat-color($accent,500) !important;
+          }
+        &:focus {
+           color: $darkcolor !important; 
+        }  
+    }
+    
+    .primary {
+        background-color: $panelBackground;
+        color: $darkcolor !important;
+        &:hover {
+            background: mat-color($accent,500) !important;
+            color: $lightcolor !important;
+          }
+    }
+    
+    .secondry {
+        background-color: mat-color($accent,500) !important;
+        color:  mat-color($accent,100) !important;
+        border-bottom: 1px solid mat-color($primary,400);
+        &:hover {
+            background: mat-color($accent,500) !important;
+            color: $lightcolor !important;
+          }
+    }
+      
+    .panel {
+        background-color: $panelBackground;
+    }
+    
+    .panel-item {
+        border-bottom: 1px solid mat-color($primary,400)
+    }
+    
+    ::-webkit-scrollbar {
+        width: 5%;
+        max-width: 10px;
+        min-width: 4px;
+        padding-right: 1px;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background: mat-color($primary,700); 
+        border-radius: 5px 5px 5px 5px;
+        opacity : 0;
+    }
+    
+    
+    ::-webkit-scrollbar-thumb:hover {
+        opacity : 1;
+    }
+
+
+}
+
+.brown-theme {
+    @include angular-material-theme($brown-app-theme);  
+    @include inherit_theme($brown-app-theme);    
+}
+
+.grey-theme {
+    @include angular-material-theme($grey-app-theme); 
+    @include inherit_theme($grey-app-theme);    
+}
+
+.p-0 {
+    padding: 0px;
+}
+
+.pt-0 {
+    padding-top: 0px;
+}
+
+
+
+.container {
+    height: 95vh;
+}
+
+
+.scrollable {
+    overflow: auto !important;
+}
+
+
+
+
+
+
