@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import { Component,  AfterViewInit } from '@angular/core';
+ 
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
   title = 'flex';
   themes = {
     "brown" : true,
@@ -13,7 +14,15 @@ export class AppComponent {
 
   }
 
-  panelExpanded : boolean = true
+  panelExpanded : boolean = false
+
+  ngAfterViewInit() {
+    setTimeout(() => {
+      this.panelExpanded = true;
+    }, 10);
+  }
+
+
 
   SetTheme(theme : string) {
     let props : Array<string> = Object.getOwnPropertyNames(this.themes);
@@ -31,7 +40,7 @@ export class AppComponent {
 
   GetLitleButtonsLayout() : string {
     if(this.panelExpanded) {
-      return "row";
+      return "row wrap";
     }
     else {
       return "column";
@@ -66,4 +75,7 @@ export class AppComponent {
   }
 
 
+  Test(message) {
+    console.log(message);
+  }
 }

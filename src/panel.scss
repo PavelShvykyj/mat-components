@@ -29,13 +29,14 @@ $grey-app-theme: mat-light-theme($grey-app-primary, $grey-app-accent, $grey-app-
     $darkcolor  : mat-color($accent,900);
 
     .dark  {
-        background: mat-color($accent,900);
+        background: $darkcolor;
         color: $lightcolor !important;
         &:hover {
             background: mat-color($accent,500) !important;
           }
         &:focus {
-           color: $darkcolor !important; 
+           color: $lightcolor !important; 
+           background: mat-color($accent,700) !important;
         }  
     }
     
@@ -58,14 +59,33 @@ $grey-app-theme: mat-light-theme($grey-app-primary, $grey-app-accent, $grey-app-
           }
     }
       
+    .warning {
+        background-color: mat-color($warn,500) !important;
+        color:  $lightcolor !important;
+        border-bottom: 1px solid mat-color($primary,400);
+        &:hover {
+            background: mat-color($warn,900) !important;
+            color: $lightcolor !important;
+          }
+    }
+    
+
+
     .panel {
         background-color: $panelBackground;
+        max-width: 20%;
     }
     
     .panel-item {
         border-bottom: 1px solid mat-color($primary,400)
     }
     
+  
+    .vertical-litle-button {
+        height: 1fr !important;
+    }
+
+
     ::-webkit-scrollbar {
         width: 5%;
         max-width: 10px;
@@ -113,7 +133,7 @@ $grey-app-theme: mat-light-theme($grey-app-primary, $grey-app-accent, $grey-app-
 
 
 .scrollable {
-    overflow: auto !important;
+    overflow-y: auto !important;
 }
 
 
