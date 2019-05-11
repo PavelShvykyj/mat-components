@@ -15,12 +15,12 @@
           >
   
         <!-- HEADER (litle butons) -->  
-        <mat-action-list fxFlex="1 0 5%"
+        <mat-action-list fxFlex="1 0 1fr"
              fxFlexFill
              fxLayout="row"
              fxLayoutAlign="start start"  
-             class="panel-item pt-0">
-             <button mat-list-item fxFlex="1  " class="dark" (click)="ChangeExpandedPanel()">  <mat-icon>compare_arrows</mat-icon> </button>
+             class="panel-item inline-flex-comp pt-0">
+             <button mat-list-item fxFlex="1  " class="dark" (click)="ChangeExpandedPanel()">  <mat-icon>reorder</mat-icon> </button>
             
             
         </mat-action-list>      
@@ -31,16 +31,16 @@
      fxFlexFill
      fxLayout="column"
      fxLayoutAlign="start center"               
-     class="panel-item scrollable pt-0">
+     class="panel-item inline-flex-comp scrollable pt-0">
      
           <button fxFlex="1 0 1fr" mat-list-item class="dark"> <mat-icon mat-list-icon>add</mat-icon> <span mat-line *ngIf="panelExpanded"> Добавить </span> </button>                    
           <button fxFlex="1 0 1fr" mat-list-item class="dark"> <mat-icon mat-list-icon>edit</mat-icon> <span mat-line *ngIf="panelExpanded"> Редактировать </span> </button>
-          <button fxFlex="1 0 1fr" mat-list-item class="dark"> <mat-icon mat-list-icon>delete</mat-icon> <span mat-line *ngIf="panelExpanded"> Удалить </span> </button>
+          <!--<button fxFlex="1 0 1fr" mat-list-item class="dark"> <mat-icon mat-list-icon>delete</mat-icon> <span mat-line *ngIf="panelExpanded"> Удалить </span> </button>
           <button fxFlex="1 0 1fr" mat-list-item class="dark"> <mat-icon mat-list-icon>info</mat-icon> <span mat-line *ngIf="panelExpanded"> Инфо </span> </button>
           <button fxFlex="1 0 1fr" mat-list-item class="dark"> <mat-icon mat-list-icon>info</mat-icon> <span mat-line *ngIf="panelExpanded"> Инфо </span> </button>
           <button fxFlex="1 0 1fr" mat-list-item class="dark"> <mat-icon mat-list-icon>info</mat-icon> <span mat-line *ngIf="panelExpanded"> Инфо </span> </button>
           <button fxFlex="1 0 1fr" mat-list-item class="dark"> <mat-icon mat-list-icon>info</mat-icon> <span mat-line *ngIf="panelExpanded"> Инфо </span> </button>
-          <button fxFlex="1 0 1fr" mat-list-item class="dark"> <mat-icon mat-list-icon>info</mat-icon> <span mat-line  *ngIf="panelExpanded"> Инфо </span> </button>
+          <button fxFlex="1 0 1fr" mat-list-item class="dark"> <mat-icon mat-list-icon>info</mat-icon> <span mat-line  *ngIf="panelExpanded"> Инфо </span> </button>-->
      </mat-action-list>      
 
      <!-- LINKS  -->      
@@ -49,15 +49,15 @@
      fxFlexFill
      fxLayout="column"
      fxLayoutAlign="start center"  
-     class="panel-item scrollable pt-0">
+     class="panel-item inline-flex-comp scrollable pt-0 ">
           
      <h3 mat-subheader>links</h3>
      <a fxFlex="1 0 1fr" mat-list-item class="primary"> <mat-icon mat-list-icon>send</mat-icon> <span mat-line  *ngIf="panelExpanded"> Перейти  </span></a>
      <a fxFlex="1 0 1fr" mat-list-item class="primary"> <mat-icon mat-list-icon>send</mat-icon> <span mat-line  *ngIf="panelExpanded"> Перейти  </span></a>
+     <!--<a fxFlex="1 0 1fr" mat-list-item class="primary"> <mat-icon mat-list-icon>send</mat-icon> <span mat-line  *ngIf="panelExpanded"> Перейти  </span></a>
      <a fxFlex="1 0 1fr" mat-list-item class="primary"> <mat-icon mat-list-icon>send</mat-icon> <span mat-line  *ngIf="panelExpanded"> Перейти  </span></a>
      <a fxFlex="1 0 1fr" mat-list-item class="primary"> <mat-icon mat-list-icon>send</mat-icon> <span mat-line  *ngIf="panelExpanded"> Перейти  </span></a>
-     <a fxFlex="1 0 1fr" mat-list-item class="primary"> <mat-icon mat-list-icon>send</mat-icon> <span mat-line  *ngIf="panelExpanded"> Перейти  </span></a>
-     <a fxFlex="1 0 1fr" mat-list-item class="primary"> <mat-icon mat-list-icon>send</mat-icon> <span mat-line  *ngIf="panelExpanded"> Перейти  </span></a>
+     <a fxFlex="1 0 1fr" mat-list-item class="primary"> <mat-icon mat-list-icon>send</mat-icon> <span mat-line  *ngIf="panelExpanded"> Перейти  </span></a>-->
 
      </mat-nav-list>   
      
@@ -67,20 +67,39 @@
      fxFlex="10 0 1fr"
      fxFlexFill
      fxLayout="column"
-     fxLayoutAlign="start center"  
+     fxLayoutAlign="start center"      
+     class="panel-item inline-flex-comp scrollable pt-0 ">
      
-     class="panel-item scrollable pt-0">
-     
-          <mat-list-item fxFlex="1 0 " class="secondry" > some  messege satrt kjtgksdjgflkgasctlukgwlu eicrtgauisbcg fasecfug aeiswtfugoiaes gtciauwgctuir yquwgtixtgqiuwg qqyirtgqicgniuw  wetgqwe  qwetterterterte qwtwtgrewtert</mat-list-item> 
-          <mat-list-item fxFlex="1 0 " class="warning" > error </mat-list-item>
-          <!--<mat-list-item fxFlex="1 0 " class="secondry" > enother message </mat-list-item>
-          <mat-list-item class="secondry" > enother message </mat-list-item>
-          <mat-list-item class="secondry" > enother message </mat-list-item>
-          <mat-list-item class="secondry" > enother message </mat-list-item>
-          <mat-list-item class="secondry" > enother message </mat-list-item>
-          <mat-list-item class="secondry" > enother message </mat-list-item>
-          <mat-list-item class="secondry" > some  messege  </mat-list-item> 
-          <mat-list-item class="warning" > error end </mat-list-item>-->
+          <mat-list-item fxLayout="column"  class="secondry inline-flex-comp" > 
+                    <button mat-icon-button class="p-0 m-0 "><mat-icon   class="p-0 m-0">cancel</mat-icon></button>
+                    <span class="p-0 m-0 messege-font">
+                         
+                         some  messege satrt 
+                         Это длинное сообщение. Поэтому занимаем больше места.
+                    </span>
+               
+          </mat-list-item> 
+          <mat-list-item fxLayout="column" class="warning inline-flex-comp" >
+               <button mat-icon-button class="p-0 m-0 "><mat-icon   class="p-0 m-0">cancel</mat-icon></button>      
+               <span  class="p-0 m-0 messege-font">
+                    error
+               </span>  
+               
+          </mat-list-item>
+          <mat-list-item fxLayout="column" class="secondry inline-flex-comp" > 
+               <button mat-icon-button class="p-0 m-0 "><mat-icon   class="p-0 m-0">cancel</mat-icon></button>
+               <span class="p-0 m-0 messege-font">
+                    enother_message 
+               </span>
+          </mat-list-item>
+
+          <!--<mat-list-item fxLayout="column" class="secondry inline-flex-comp" > enother message </mat-list-item>
+          <mat-list-item fxLayout="column" class="secondry inline-flex-comp" > enother message messege satrt qwtwtgrewtert rlqgqughru qwrgiquwriu qwtgrqwet4  </mat-list-item>
+          <mat-list-item fxLayout="column" class="secondry inline-flex-comp" > enother message </mat-list-item>
+          <mat-list-item fxLayout="column" class="secondry inline-flex-comp" > enother message </mat-list-item>
+          <mat-list-item fxLayout="column" class="secondry inline-flex-comp" > enother message </mat-list-item>
+          <mat-list-item fxLayout="column" class="secondry inline-flex-comp" > some  messege  </mat-list-item> 
+          <mat-list-item fxLayout="column" class="warning inline-flex-comp" > error end </mat-list-item>-->
      
      </mat-list> 
 
@@ -113,6 +132,7 @@
                <button  mat-raised-button color="primary" > primary </button>
                <button  mat-raised-button color="warn" > warn </button>
                <button  mat-raised-button  > clear </button>
+               
           </div>
           <div fxLayout="row wrap">
                <button fxFlex mat-raised-button (click)="SetTheme('brown')">brown</button> 
