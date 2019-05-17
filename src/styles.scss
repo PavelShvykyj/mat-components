@@ -1,2 +1,47 @@
-@import 'panel.scss';
+@import '~@angular/material/theming';
+
+@import './app/themes.scss';
+
+
 @import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+
+@include mat-core();
+// нужно включить хоть какуюто тему в коневой стиль иначе 
+// начинает не работать как минимум анимация на касании елементов
+@include angular-material-theme($grey-app-theme); 
+
+
+.p-0 {
+    padding: 0px !important;
+}
+
+.m-0 {
+    margin: 0px !important;
+}
+
+.pt-0 {
+    padding-top: 0px !important;
+}
+
+.ml-1 {
+    margin-left: 4px !important;
+}
+
+.mr-2 {
+    margin-right:  8px !important;
+}
+
+.container {
+    height: 95vh;
+}
+
+.messege-font {
+    font-size: 13px !important;
+}
+
+.scrollable {
+    overflow-y: auto !important;
+}
+
+
+

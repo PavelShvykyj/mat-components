@@ -1,4 +1,48 @@
-@import '../panel.scss';
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/theming';
+@import '../app/themes.scss';
+@import '../global.inherit.theme.scss';
+
+
+
+.brown-theme-panel {
+    @include angular-material-theme($brown-app-theme);  
+    @include inherit_theme($brown-app-theme);   
+    $theme_prop : theme_prop($brown-app-theme);
+
+    .panel {
+        background-color: mat-color(map-get($theme_prop,primary) ,100);
+        max-width: 20%;
+    }
+    
+    .panel-item {
+        border-bottom: 1px solid mat-color(map-get($theme_prop,primary),400)
+    }   
+
+}
+
+.grey-theme-panel {
+    @include angular-material-theme($grey-app-theme); 
+    @include inherit_theme($grey-app-theme);    
+    
+    $theme_prop : theme_prop($grey-app-theme);
+    
+    .panel {
+        background-color: mat-color(map-get($theme_prop,primary),100);
+        max-width: 20%;
+    }
+    
+    .panel-item {
+        border-bottom: 1px solid mat-color(map-get($theme_prop,primary),400)
+    }
+
+}
+
+
+
+
+
+
 
 $bodyBackground  : beige;
  

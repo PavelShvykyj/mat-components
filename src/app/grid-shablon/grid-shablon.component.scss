@@ -1,0 +1,33 @@
+@import '~@angular/material/theming';
+@import '../themes.scss';
+@import '../../global.inherit.theme.scss';
+
+.brown-theme-grid {
+    @include angular-material-theme($brown-app-theme);  
+    @include inherit_theme($brown-app-theme);   
+
+    $theme_prop : theme_prop($brown-app-theme);
+
+    .example {
+        background-color: mat-color(map-get($theme_prop,primary) ,500);
+    }
+    
+ 
+}
+
+.grey-theme-grid {
+    @include angular-material-theme($grey-app-theme); 
+    @include inherit_theme($grey-app-theme);    
+    
+    $theme_prop : theme_prop($grey-app-theme);
+    
+    .example {
+        background-color: mat-color(map-get($theme_prop,primary) ,500);
+    }
+ 
+}
+
+
+
+
+
