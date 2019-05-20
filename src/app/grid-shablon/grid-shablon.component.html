@@ -1,4 +1,44 @@
-<div      [ngClass]="{'brown-theme-grid': themes['brown'],
+<!--<div      [ngClass]="{'brown-theme-grid': themes['brown'],
 'grey-theme-grid': themes['grey']}">
 <button mat-raised-button class="example">example </button>
-</div>
+</div>-->
+
+<mat-grid-list 
+    class="w-100 "
+    [cols]="GridData.options.cols"
+    [rowHeight]="GridData.options.rowHeight"
+    [ngClass]="{'brown-theme-grid': themes['brown'],
+            'grey-theme-grid': themes['grey']}"
+>
+
+    <mat-grid-tile 
+        class="grid"
+        [colspan]="GridData.header.gridoptions.colspan"
+        [rowspan]="GridData.header.gridoptions.rowspan"
+    >
+        {{GridData.header.dataoptions.data.title}}
+    </mat-grid-tile> 
+
+
+    <mat-grid-tile 
+        *ngFor="let period of GridData.headPeriods"
+        class="grid"
+        [colspan]="period.gridoptions.colspan"
+        [rowspan]="period.gridoptions.rowspan"
+        
+        >
+        {{period.dataoptions.data.title }} {{period.dataoptions.data.subtitle }}
+    </mat-grid-tile> 
+
+    <mat-grid-tile 
+        *ngFor="let box of GridData.boxes"
+        class="grid"
+        [colspan]="box.gridoptions.colspan"
+        [rowspan]="box.gridoptions.rowspan"
+        
+        >
+        {{ box.dataoptions.data.title }}
+    </mat-grid-tile> 
+
+
+</mat-grid-list>

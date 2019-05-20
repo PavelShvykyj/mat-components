@@ -10,9 +10,14 @@
 
     .example {
         background-color: mat-color(map-get($theme_prop,primary) ,500);
-    }
+    };
     
- 
+    .grid {
+        border: 1px solid mat-color(map-get($theme_prop,accent)) !important;
+        background-color : white !important;
+        font: small lighter !important;
+        color: mat-color(map-get($theme_prop,accent),500); 
+    } 
 }
 
 .grey-theme-grid {
@@ -24,7 +29,15 @@
     .example {
         background-color: mat-color(map-get($theme_prop,primary) ,500);
     }
- 
+
+    .grid {
+        border: 1px solid mat-color(map-get($theme_prop,accent)) !important;
+        background-color : white !important;
+        font: small lighter !important;
+        color: mat-color(map-get($theme_prop,accent),500); 
+
+    } 
+    
 }
 
 

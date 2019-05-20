@@ -19,6 +19,11 @@
         border-bottom: 1px solid mat-color(map-get($theme_prop,primary),400)
     }   
 
+    .body {
+        background-color: mat-color(map-get($theme_prop,primary),50);
+    }
+ 
+
 }
 
 .grey-theme-panel {
@@ -36,19 +41,21 @@
         border-bottom: 1px solid mat-color(map-get($theme_prop,primary),400)
     }
 
-}
-
-
-
-
-
-
-
-$bodyBackground  : beige;
+    
  
- .body {
-    background-color: $bodyBackground;
+    .body {
+       background-color: mat-color(map-get($theme_prop,primary),50);
+   }
+   
+
 }
+
+
+
+
+
+
+
 
 
 
