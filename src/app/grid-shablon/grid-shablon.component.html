@@ -1,7 +1,11 @@
-<!--<div      [ngClass]="{'brown-theme-grid': themes['brown'],
-'grey-theme-grid': themes['grey']}">
-<button mat-raised-button class="example">example </button>
-</div>-->
+<div      
+[ngClass]="{'brown-theme-grid': themes['brown'],
+            'grey-theme-grid': themes['grey']}"
+class="p-1"            
+>
+<button mat-raised-button  (click)="SmallFormat()">small format </button>
+<button mat-raised-button  (click)="Format()"> format </button>
+</div>
 
 <mat-grid-list 
     class="w-100 "
@@ -12,33 +16,16 @@
 >
 
     <mat-grid-tile 
+        *ngFor="let element of GridData.elements"
         class="grid"
-        [colspan]="GridData.header.gridoptions.colspan"
-        [rowspan]="GridData.header.gridoptions.rowspan"
-    >
-        {{GridData.header.dataoptions.data.title}}
-    </mat-grid-tile> 
-
-
-    <mat-grid-tile 
-        *ngFor="let period of GridData.headPeriods"
-        class="grid"
-        [colspan]="period.gridoptions.colspan"
-        [rowspan]="period.gridoptions.rowspan"
-        
+        [colspan]="element.gridoptions.colspan"
+        [rowspan]="element.gridoptions.rowspan"
         >
-        {{period.dataoptions.data.title }} {{period.dataoptions.data.subtitle }}
+        <span *ngIf="element.elementtype == GridElementtype.Header">{{element.dataoptions.data.title }} </span>
+        <span *ngIf="element.elementtype == GridElementtype.Period">{{element.dataoptions.data.title }} {{ element.dataoptions.data.subtitle }} </span>
+        <span *ngIf="element.elementtype == GridElementtype.SubPeriod">{{element.dataoptions.data.title }} {{ element.dataoptions.data.subtitle }} </span>
+        <span *ngIf="element.elementtype == GridElementtype.Box">{{element.dataoptions.data.title }} </span>
+        <span *ngIf="element.elementtype == GridElementtype.BoxIntime">  </span>
     </mat-grid-tile> 
-
-    <mat-grid-tile 
-        *ngFor="let box of GridData.boxes"
-        class="grid"
-        [colspan]="box.gridoptions.colspan"
-        [rowspan]="box.gridoptions.rowspan"
-        
-        >
-        {{ box.dataoptions.data.title }}
-    </mat-grid-tile> 
-
-
 </mat-grid-list>
+

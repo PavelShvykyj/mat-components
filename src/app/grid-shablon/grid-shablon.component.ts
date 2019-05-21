@@ -1,15 +1,18 @@
 import { element } from 'protractor';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, HostListener } from '@angular/core';
 
 enum GridElementType {
   Period,
   SubPeriod,
   Box,
-  BoxIntime
+  BoxIntime,
+  Header
 }
 
 enum BoxIntimeStatus {
   free,
+  reserved,
+  accommodation,
   arrived,
   departure,
   cleaning,
@@ -53,14 +56,12 @@ interface IGridElementData {
 }
 
 interface IGridElementObject {
-  gridoptions: IGridElementOptions
-  dataoptions: IGridElementData
+  gridoptions: IGridElementOptions,
+  dataoptions: IGridElementData,
+  elementtype : GridElementType
 }
 
-interface IGridElementComplex {
-  element: IGridElementObject
-  elements: Array<IGridElementObject>
-}
+
 
 interface IGridOptions {
   cols: number
@@ -69,9 +70,7 @@ interface IGridOptions {
 
 interface IGridObjectData {
   options: IGridOptions,
-  header: IGridElementObject,
-  headPeriods: Array<IGridElementObject>
-  boxes: Array<IGridElementObject>
+  elements : Array<IGridElementObject>
 }
 
 
@@ -103,17 +102,161 @@ export class GridShablonComponent implements OnInit {
   };
 
 
-  GetGridObjectExample(): IGridObjectData {
+  
+  GridData: IGridObjectData = this.GetGridObjectExample();
+  
+  GridElementtype : typeof GridElementType = GridElementType;
+  LastWidht : number;
+  CheckPointReformat = 1024;
 
 
-    let options = { cols: 105, rowHeight: "10px" };
+  constructor() { 
+    
+  }
 
-    let header = {
-      gridoptions: { rowspan: 4, colspan: 12 },
-      dataoptions: { data: { title: "HOTEL" } }
+  ngOnInit() {
+    this.LastWidht = window.innerWidth;
+    this.Reformat();
+  }
+
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+  
+    let currWidth = event.target.innerWidth;
+    //console.log('curr', currWidth)
+    //console.log('last', this.LastWidht);
+
+    if(currWidth <= this.CheckPointReformat && this.LastWidht >= this.CheckPointReformat) {
+      this.LastWidht = currWidth;
+      this.Reformat();
+      return
+    } 
+
+    if(currWidth >= this.CheckPointReformat && this.LastWidht <= this.CheckPointReformat) {
+      this.LastWidht = currWidth;
+      this.Reformat();
+      return
+    } 
+
+    this.LastWidht = currWidth;
+
+  }
+
+  Reformat(){
+    if (this.LastWidht <= this.CheckPointReformat) {
+      this.SmallFormat();
+    }
+    else {
+      this.Format();
+    }
+  }
+
+  SmallFormat() {
+    this.GridData = this.GetGridObjectExampleSmall();   
+  }
+
+  Format() {
+    this.GridData = this.GetGridObjectExample();   
+  }
+
+
+  GetGridObjectExampleSmall(): IGridObjectData {
+    let options : IGridOptions  = { cols: 21, rowHeight: "10px" };
+    let res: IGridObjectData = {
+      options: options,
+      elements : []
+    };
+
+    let elementbox = {
+      gridoptions: { rowspan: 2, colspan: 21 },
+      dataoptions: {
+        data: {
+          title: "Flore 1",
+          id: "Flore 1",
+          boxnumber: "Flore 1"
+        }
+      },
+      elementtype : GridElementType.Box
+    }
+    res.elements.push(elementbox);
+
+    for (let index = 1; index < 15; index++) {
+      let elementbox = {
+        
+          gridoptions: { rowspan: 2, colspan: 21 },
+          dataoptions: {
+            data: {
+              title: "room " + index,
+              id: index.toString(),
+              boxnumber: index
+            }
+          },
+          elementtype : GridElementType.Box
+      }
+      res.elements.push(elementbox)
+
+      let MainPeriod : IGridElementObject = 
+      {
+        gridoptions: { rowspan: 2, colspan: 21 },
+        dataoptions: {
+          data:
+          {
+            title: "Month",
+            subtitle: "2019",
+            periodbegin: new Date(),
+            periodlenth: 1
+          }
+        },
+        elementtype : GridElementType.Period
+      };
+    
+    res.elements.push(MainPeriod);  
+
+      for (let indexdate = 1; indexdate < 32; indexdate++) {
+        let elementboxintime: IGridElementObject = {
+          gridoptions: { rowspan: 2, colspan: 3 },
+          dataoptions: {
+            data: {
+              box: {
+                title: "room " + index,
+                id: index.toString(),
+                boxnumber: index
+              },
+              status: BoxIntimeStatus.free,
+              periodbegin: new Date(2019, 1, indexdate)
+
+            }
+          },
+          elementtype : GridElementType.BoxIntime
+        }
+        res.elements.push(elementboxintime)
+      }
     }
 
-    let headPeriods = [
+    return res;
+
+
+  }
+
+
+  GetGridObjectExample(): IGridObjectData {
+    let options : IGridOptions  = { cols: 105, rowHeight: "10px" };
+    let res: IGridObjectData = {
+      options: options,
+      elements : []
+    };
+
+
+    let header : IGridElementObject = {
+      gridoptions: { rowspan: 4, colspan: 12 },
+      dataoptions: { data: { title: "HOTEL" } },
+      elementtype : GridElementType.Header
+    }
+
+    res.elements.push(header);
+
+    let MainPeriod : IGridElementObject = 
       {
         gridoptions: { rowspan: 2, colspan: 93 },
         dataoptions: {
@@ -124,13 +267,15 @@ export class GridShablonComponent implements OnInit {
             periodbegin: new Date(),
             periodlenth: 1
           }
-        }
-      }
-    ];
+        },
+        elementtype : GridElementType.Period
+      };
+    
+    res.elements.push(MainPeriod);  
 
 
     for (let index = 1; index < 32; index++) {
-      let element = {
+      let element : IGridElementObject  = {
         gridoptions: { rowspan: 2, colspan: 3 },
         dataoptions: {
           data: {
@@ -139,12 +284,13 @@ export class GridShablonComponent implements OnInit {
             periodbegin: new Date(),
             periodlenth: 1
           }
-        }
+        },
+        elementtype : GridElementType.SubPeriod
       }
-      headPeriods.push(element);
+      res.elements.push(element);
     }
 
-    let boxes = [];
+    
     let elementbox = {
       gridoptions: { rowspan: 2, colspan: 105 },
       dataoptions: {
@@ -153,9 +299,10 @@ export class GridShablonComponent implements OnInit {
           id: "Flore 1",
           boxnumber: "Flore 1"
         }
-      }
+      },
+      elementtype : GridElementType.Box
     }
-    boxes.push(elementbox)
+    res.elements.push(elementbox);
 
 
     for (let index = 1; index < 15; index++) {
@@ -168,9 +315,10 @@ export class GridShablonComponent implements OnInit {
               id: index.toString(),
               boxnumber: index
             }
-          }
+          },
+          elementtype : GridElementType.Box
       }
-      boxes.push(elementbox)
+      res.elements.push(elementbox)
 
 
       for (let indexdate = 1; indexdate < 32; indexdate++) {
@@ -187,31 +335,18 @@ export class GridShablonComponent implements OnInit {
               periodbegin: new Date(2019, 1, indexdate)
 
             }
-          }
+          },
+          elementtype : GridElementType.BoxIntime
         }
-        boxes.push(elementboxintime)
-
+        res.elements.push(elementboxintime)
       }
     }
 
 
-    let res: IGridObjectData = {
-      options: options,
-      header: header,
-      headPeriods: headPeriods,
-      boxes: boxes
-    };
+    
+    
+    
     return res;
-  }
-
-  GridData: IGridObjectData = this.GetGridObjectExample()
-
-
-  constructor() { 
-    console.log(this.GridData);
-  }
-
-  ngOnInit() {
   }
 
 }
